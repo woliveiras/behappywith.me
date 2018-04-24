@@ -1,9 +1,11 @@
 import React from 'react'
-import { render } from 'react-dom'
 import './img/favicon.ico'
 import './index.css'
+import './css/pure-min.css'
+import { render } from 'react-dom'
+import App from './components/App'
 
 render(
-  <h1>Welcome to React!</h1>,
+  <App />,
   document.querySelector('#app')
 )
