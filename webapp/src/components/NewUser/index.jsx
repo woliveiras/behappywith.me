@@ -1,6 +1,7 @@
 import React from 'react'
 import Label from '../Label'
 import Input from '../Input'
+import GenderImage from '../GenderImage'
 
 class NewUser extends React.Component {
   constructor(props) {
@@ -41,6 +42,9 @@ class NewUser extends React.Component {
             isValid={ this.state.validation.isInvalidName }
             defaultValue={ this.state.user.name }
             onChange={ this.updateName }
+          />
+          <GenderImage
+            gender='f'
           />
         </form>
       </div>

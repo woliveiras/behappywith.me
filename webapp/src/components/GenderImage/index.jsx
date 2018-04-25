@@ -1,11 +1,11 @@
 import React from 'react'
-import Image from '../Image'
+import ImageContainer from '../ImageContainer'
 
 export default function GenderImage(props) {
   return (
-    <Image
+    <ImageContainer
       x={0}
-      y={(props.genero === 'm') ? 0 : 1}
+      y={(props.gender === 'm') ? 0 : 1}
       width={140}
       height={140}
       backgroundHeight={280}
