@@ -1,17 +1,19 @@
 import React from 'react'
 import Label from '../Label'
 import Input from '../Input'
-import GenderImage from '../GenderImage'
+import GenderSelector from '../GenderSelector'
 
 class NewUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user: {
-        name: ''
+        name: '',
+        gender: ''
       },
       validation: {
-        isInvalidName: false
+        isInvalidName: false,
+        isValidGender: false
       }
     }
   }
@@ -19,6 +21,16 @@ class NewUser extends React.Component {
   updateName = (e) => {
     const user = this.state.user
     user.name = e.target.value
+
+    this.setState({
+      user: user
+    })
+  }
+
+  updateGender = (e, gender) => {
+    e.preventDefault()
+    const user = this.state.user
+    user.gender = gender
 
     this.setState({
       user: user
@@ -43,8 +55,14 @@ class NewUser extends React.Component {
             defaultValue={ this.state.user.name }
             onChange={ this.updateName }
           />
-          <GenderImage
-            gender='f'
+          <Label
+            text="Seu gênero:"
+            isInvalid={ this.state.validation.isValidGender }
+          />
+          <GenderSelector
+            isValid={ this.state.validation.isValidGender }
+            gender={ this.state.user.gender }
+            updateGender={ this.updateGender }
           />
         </form>
       </div>
