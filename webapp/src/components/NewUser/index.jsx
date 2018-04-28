@@ -2,15 +2,13 @@ import React from 'react'
 import Label from '../Label'
 import Input from '../Input'
 import GenderSelector from '../GenderSelector'
+import User from '../../models/User'
 
 class NewUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
-        name: '',
-        gender: ''
-      },
+      user: new User(),
       validation: {
         isInvalidName: false,
         isValidGender: false
