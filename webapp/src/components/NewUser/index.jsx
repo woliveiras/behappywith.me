@@ -2,6 +2,8 @@ import React from 'react'
 import Label from '../Label'
 import Input from '../Input'
 import GenderSelector from '../GenderSelector'
+import Button from '../Button'
+
 import User from '../../models/User'
 
 class NewUser extends React.Component {
@@ -35,6 +37,19 @@ class NewUser extends React.Component {
     })
   }
 
+  validate(e) {
+    e.preventDefault()
+    const user = this.state.user
+    const validation = this.state.validation
+
+    validation.isInvalidName = !user.validateName()
+    validation.isValidGender = !user.validateGender()
+
+    this.setState({
+      validation: validation
+    })
+  }
+
   render() {
     return (
       <div className="center">
@@ -61,6 +76,11 @@ class NewUser extends React.Component {
             isValid={ this.state.validation.isValidGender }
             gender={ this.state.user.gender }
             updateGender={ this.updateGender }
+          />
+          <Button
+            primary
+            text="Próximo"
+            onClick={ this.validate.bind(this) }
           />
         </form>
       </div>
