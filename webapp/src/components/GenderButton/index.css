@@ -19,3 +19,9 @@ a.selected-gender-button {
 a.selected-gender-button:hover {
   background-color: #00C853;
 }
+
+a.disabled-link {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -132,6 +132,7 @@ class NewUser extends React.Component {
           isValid={ this.state.validation.isValidGender }
           gender={ this.state.user.gender }
           updateGender={ this.updateGender }
+          isDisabled={ this.state.firstViewFinally }
         />
       </section>
     )
