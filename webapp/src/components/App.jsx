@@ -8,7 +8,15 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <NewUser error={ message => this.refs.toast.error(message) }/>
+        <NewUser 
+          onSubmit={user => {
+            let gender = user.gender == 'm' ? 'o' : 'a'
+
+            this.refs.toast.success(
+              `Seja bem vind${gender} ${user.name}`
+            )
+          }}
+          error={ message => this.refs.toast.error(message) }/>
         <Toast ref="toast"/>
       </div>
     )

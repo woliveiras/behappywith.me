@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import Image from '../ImageContainer'
+import ImageContainer from '../ImageContainer'
 
 export default function ButtonImage (props) {
     let style = {}
@@ -11,6 +11,7 @@ export default function ButtonImage (props) {
         index = 1
     } else {
         style.float = 'left'
+        index = 0
     }
 
     let properties = Object.assign({}, props)
@@ -19,7 +20,8 @@ export default function ButtonImage (props) {
     return (
         <div
             style={style}
-            className={'option-image-scroller'}>
+            className={'option-image-scroller'}
+            {...properties}>
             <ImageContainer
                 x={index}
                 y={0}

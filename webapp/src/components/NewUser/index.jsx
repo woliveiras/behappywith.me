@@ -3,8 +3,10 @@ import Label from '../Label'
 import Input from '../Input'
 import GenderSelector from '../GenderSelector'
 import Button from '../Button'
+import ImageScroller from '../ImageScroller'
 
 import User from '../../models/User'
+import Avatar from '../../models/Avatar';
 
 import {ERROR_MESSAGES, LABELS, PLACEHOLDERS} from './constants'
 
@@ -34,6 +36,7 @@ class NewUser extends React.Component {
     e.preventDefault()
     const user = this.state.user
     user.gender = gender
+    user.avatar = Avatar.getAll()[0]
 
     this.setState({
       user: user
@@ -99,7 +102,10 @@ class NewUser extends React.Component {
             text={LABELS.back}
             onClick={ e => {
               e.preventDefault()
+              let user = this.state.user
+              user.avatar = Avatar.getAll()[0]
               this.setState({
+                user: user,
                 firstViewFinally: false
               })
             }}
@@ -107,6 +113,10 @@ class NewUser extends React.Component {
           <Button
             primary
             text={LABELS.save}
+            onClick={e => {
+              e.preventDefault()
+              this.props.onSubmit(this.state.user)
+            }}
           />
         </section>
       )
@@ -140,12 +150,39 @@ class NewUser extends React.Component {
     )
   }
 
+  renderAvatar() {
+    if (this.state.firstViewFinally) {
+      debugger
+      return (
+        <section>
+          <Label text="Escolha seu avatar:"/>
+          <ImageScroller
+              archive="img/avatars.png"
+              y={(this.state.user.gender == 'm' ? 0 : 1)}
+              elements={Avatar.getAll()}
+              selected={this.state.user.avatar}
+              onChange={avatar => {                            
+                  let user = this.state.user;
+                  user.avatar = avatar;
+                  this.setState({                                
+                      user: user                                
+                  });
+              }}
+          />
+        </section>
+      )
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <div className="center">
         <form className="pure-form pure-form-stacked">
           { this.renderName() }
           { this.renderGender() }
+          { this.renderAvatar() }
           { this.renderButtons() }
         </form>
       </div>
