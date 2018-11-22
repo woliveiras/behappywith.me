@@ -1,7 +1,10 @@
+import Avatar from './Avatar'
+
 class User {
   constructor() {
     this.name = ''
     this.gender = ''
+    this.avatar = Avatar.getAll()[0]
   }
 
   validateName() {
