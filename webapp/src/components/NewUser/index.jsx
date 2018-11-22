@@ -6,6 +6,8 @@ import Button from '../Button'
 
 import User from '../../models/User'
 
+import {ERROR_MESSAGES, LABELS, PLACEHOLDERS} from './constants'
+
 class NewUser extends React.Component {
   constructor(props) {
     super(props)
@@ -50,11 +52,11 @@ class NewUser extends React.Component {
     let firstViewFinally = false
 
     if (validation.isInvalidName && validation.isValidGender) {
-      message = 'Os campos nome e gênero estão inválidos!'
+      message = ERROR_MESSAGES.allIncorrect
     } else if (validation.isInvalidName) {
-      message = 'Seu nome está inválido!'
+      message = ERROR_MESSAGES.invalidName
     } else if (validation.isValidGender) {
-      message = 'Selecione seu gênero!'
+      message = ERROR_MESSAGES.invalidGender
     } else {
       firstViewFinally = true;
     }
@@ -73,12 +75,12 @@ class NewUser extends React.Component {
       <section>
         <Label
           forAttr="name"
-          text="Qual o seu nome?"
+          text={LABELS.name}
           isInvalid={this.state.isInvalidName}
         />
         <Input
           id="name"
-          placeholder="Digite seu nome"
+          placeholder={PLACEHOLDERS.name}
           maxLength="40"
           readOnly={ this.state.firstViewFinally }
           isValid={this.state.validation.isInvalidName}
@@ -94,7 +96,7 @@ class NewUser extends React.Component {
       return(
         <section>
           <Button
-            text="Voltar"
+            text={LABELS.back}
             onClick={ e => {
               e.preventDefault()
               this.setState({
@@ -104,7 +106,7 @@ class NewUser extends React.Component {
           />
           <Button
             primary
-            text="Salvar"
+            text={LABELS.save}
           />
         </section>
       )
@@ -113,7 +115,7 @@ class NewUser extends React.Component {
         <section>
           <Button
             primary
-            text="Próximo"
+            text={LABELS.next}
             onClick={this.validate.bind(this)}
           />
         </section>
