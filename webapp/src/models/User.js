@@ -1,4 +1,7 @@
 import Avatar from './Avatar'
+import Repository from '../infrastructure/Repository'
+
+const repository =  new Repository()
 
 class User {
   constructor() {
@@ -13,6 +16,27 @@ class User {
 
   validateGender() {
     return ['m', 'f'].some(param => this.gender === param)
+  }
+
+  toString() {
+    return `${this.name}, ${this.avatar.toString()}`
+  }
+
+  save(callback) {
+    repository.save(this, callback)
+  }
+
+  static get(success, error) {
+    repository.get(persistentData => {
+      let user = new User()
+      user.name = persistentData.name
+      user.gender = persistentData.gender
+      user.avatar = new Avatar(
+        persistentData.avatar.index,
+        persistentData.avatar.description
+      )
+      success(user)
+    }, error)
   }
 }
 
