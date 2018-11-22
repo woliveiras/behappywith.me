@@ -68,7 +68,6 @@ class ImageScroller extends React.Component {
 
     imageRender(entry,index) {
         let y = this.props.y ? this.props.y : 0;
-        debugger
         return (
             <li style={{
                 paddingTop: '8px',
@@ -82,7 +81,7 @@ class ImageScroller extends React.Component {
                     width={140}
                     height={140}
                     backgroundHeight={280}
-                    archive={this.props.archive}
+                    file={this.props.file}
                 />
             </li>
         )   
@@ -97,8 +96,7 @@ class ImageScroller extends React.Component {
             MsTransitionDuration: ms, /* IE */
             MozTransitionDuration: ms, /* Firefox */
             OTransitionDuration: ms, /* Opera */
-            transitionDuration: ms, /* Nativa do W3C */
-
+            transitionDuration: ms, /*  W3C */
             listStyleType: 'none',
             margin: '0',
             padding: '0',

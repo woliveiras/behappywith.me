@@ -152,12 +152,11 @@ class NewUser extends React.Component {
 
   renderAvatar() {
     if (this.state.firstViewFinally) {
-      debugger
       return (
         <section>
           <Label text="Escolha seu avatar:"/>
           <ImageScroller
-              archive="img/avatars.png"
+              file="img/avatars.png"
               y={(this.state.user.gender == 'm' ? 0 : 1)}
               elements={Avatar.getAll()}
               selected={this.state.user.avatar}

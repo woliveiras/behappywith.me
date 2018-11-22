@@ -28,7 +28,7 @@ export default function ButtonImage (props) {
                 width={width}
                 height={width}
                 backgroundHeight={width}
-                archive={'img/buttons.png'}
+                file={'img/buttons.png'}
             />
         </div>
     )
