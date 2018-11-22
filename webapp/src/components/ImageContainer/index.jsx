@@ -1,5 +1,6 @@
 import React from 'react'
 import './img/avatars.png'
+import './img/buttons.png'
 
 class ImageContainer extends React.Component {
   constructor(props) {
