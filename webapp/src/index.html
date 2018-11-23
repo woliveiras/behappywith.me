@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.ico">
+  <script>       
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('behappy.sw.js')
+            .then(function(registration) {
+                console.log('ServiceWorker registrado com sucesso!');
+            }).catch(function(error) {
+                console.log('Erro no registro: ', error);
+        });
+    }
+  </script>
   <title>behappywith.me from React PWAs book</title>
 </head>
 <body>
