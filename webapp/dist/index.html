@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" manifest="behappy.appcache">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <!-- Google Chrome e Mozilal Firefox -->
+  <meta name="theme-color" content="#2c80b9">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#2c80b9">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#2c80b9">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script>       
+    <!--
+      if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('behappy.sw.js')
+              .then(function(registration) {
+                  console.log('ServiceWorker registered');
+              }).catch(function(error) {
+                  console.log('Erro no registro: ', error);
+          });
+      }
+    //-->
+  </script>
+  <title>behappywith.me from React PWAs book</title>
+<link href="style.css" rel="stylesheet"></head>
+<body>
+  <div id="app"></div>
+  <noscript>
+    <div>
+        Desculpe, mas não é possível utilizar esta aplicação com o recurso de scripts desabilitado.
+        Verifique como habilitá-lo e tente novamente.
+        <br />
+        <img src="img/logo.png" />
+    </div>                
+  </noscript>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
